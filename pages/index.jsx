@@ -17,7 +17,7 @@ const Home = () => {
         <Wrapper>
             <h1><strong>Next</strong>PLANET</h1>
             <p>Clean-code practice oriented, It's a NextJS practical starter-template with a freedom of choice</p>
-            <h2>START-UP: WITH FIREBASE</h2>
+            <h2>START-UP: WITH FIREBASE </h2>
             <div className="badges">
             <Link href="/about"><button>Example Link to About</button></Link>
             <button className="disabled">Firebase Connected</button>
