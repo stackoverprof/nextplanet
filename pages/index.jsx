@@ -6,7 +6,7 @@ const Home = () => {
     return (
         <Wrapper>
             <h1><strong>Next</strong>PLANET</h1>
-            <p>Clean-code practice oriented, NextJS super-complete starting template with a freedom of choice</p>
+            <p>Clean-code practice oriented, It's a NextJS practical starter-template with a freedom of choice</p>
             <h2>START-UP: PURE BASIC</h2>
             <Link href="/about"><button>Example Link to About</button></Link>
             
@@ -30,8 +30,6 @@ const Wrapper = Styled.div(() =>`
     }
 
     h2{
-        // position: fixed;
-        // bottom: 24px;
         font-size: 16px;
         font-weight: bold;
     }
@@ -39,6 +37,8 @@ const Wrapper = Styled.div(() =>`
     p{
         margin-bottom: 32px;
         max-width: 520px;
+        width: 90%;
+        min-width: 320px;
         text-align: center;
     }
 
