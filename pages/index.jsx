@@ -1,29 +1,17 @@
 import React from 'react'
 import Styled from '@emotion/styled'
 import Link from 'next/link'
-import { DB } from '../extensions/services/firebase'
     
 const Home = () => {
-
-    const handleInsert = () => {
-        DB.collection('Test').doc().set({
-            body : "tester",
-            timestamp: new Date().toDateString()
-        })
-        .then(console.log('Data successfully stored'))
-        .catch(err => console.log('Failed storing :' + err))
-    }
-
 
     return (
         <Wrapper>
             <h1><strong>Next</strong>PLANET</h1>
             <p>Clean-code practice oriented, It's a NextJS practical starter-template with a freedom of choice</p>
             <h2>START-UP: WITH FIREBASE </h2>
-            <div className="badges">
-            <Link href="/about"><button>Link to About</button></Link>
-            <button className="blue" onClick={handleInsert}>Insertion Test</button>
-
+            <div className="links">
+                <Link href="/about"><button>Login</button></Link>
+                <Link href="/about"><button>SignUp</button></Link>
             </div>
             
             <svg width="420" height="337.5" viewBox="0 0 56 45" fill="#ddd" xmlns="http://www.w3.org/2000/svg">
