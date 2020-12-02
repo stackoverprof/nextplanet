@@ -18,7 +18,6 @@ button, .button{
 
     &:focus{
         outline: none;
-        box-shadow: 0 0 4px black;
         border: 1px white;
     }
 }
@@ -44,5 +43,31 @@ button.disabled{
         outline: none;
         box-shadow: none;
         border: none;
+    }
+}
+
+.orange{
+    background: #FFB514;
+
+    &:hover{
+        background: #d69915;
+    }
+
+    &:focus{
+        outline: none;
+        border: 1px white;
+    }
+}
+
+.blue{
+    background: #1ba5db;
+
+    &:hover{
+        background: #1788b4;
+    }
+
+    &:focus{
+        outline: none;
+        border: 1px white;
     }
 }

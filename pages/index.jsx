@@ -1,17 +1,19 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Styled from '@emotion/styled'
 import Link from 'next/link'
 import { DB } from '../extensions/services/firebase'
     
 const Home = () => {
 
-    useEffect(() => {
+    const handleInsert = () => {
         DB.collection('Test').doc().set({
-            body : "tester"
+            body : "tester",
+            timestamp: new Date().toDateString()
         })
-        .then(console.log('success'))
-        .catch(err => console.log(err))
-    }, [])
+        .then(console.log('Data successfully stored'))
+        .catch(err => console.log('Failed storing :' + err))
+    }
+
 
     return (
         <Wrapper>
@@ -19,8 +21,8 @@ const Home = () => {
             <p>Clean-code practice oriented, It's a NextJS practical starter-template with a freedom of choice</p>
             <h2>START-UP: WITH FIREBASE </h2>
             <div className="badges">
-            <Link href="/about"><button>Example Link to About</button></Link>
-            <button className="disabled">Firebase Connected</button>
+            <Link href="/about"><button>Link to About</button></Link>
+            <button className="blue" onClick={handleInsert}>Insertion Test</button>
 
             </div>
             

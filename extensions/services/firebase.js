@@ -13,14 +13,7 @@ const firebaseConfig = {
     measurementId: process.env.MEASUREMENT_ID
 }
 
-try {
-    firebase.initializeApp(firebaseConfig)
-} catch (err) {
-    if (!/already exists/.test(err.message)) console.error('Firebase initialization error', err.stack)
-}
+if (!firebase.apps.length) firebase.initializeApp(firebaseConfig)
 
-const DB = firebase.firestore()
-
-export  {
-    DB, firebase as default
-}
+export default firebase
+export const DB = firebase.firestore()
