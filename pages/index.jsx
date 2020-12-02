@@ -8,7 +8,7 @@ const Home = () => {
         <Wrapper>
             <h1><strong>Next</strong>PLANET</h1>
             <p>Clean-code practice oriented, It's a NextJS practical starter-template with a freedom of choice</p>
-            <h2>START-UP: WITH FIREBASE </h2>
+            <h2>START-UP: AUTH ONLY EMAIL </h2>
             <div className="links">
                 <Link href="/about"><button>Login</button></Link>
                 <Link href="/about"><button>SignUp</button></Link>
