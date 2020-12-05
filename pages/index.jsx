@@ -10,8 +10,8 @@ const Home = () => {
             <p>Clean-code practice oriented, It's a NextJS practical starter-template with a freedom of choice</p>
             <h2>START-UP: AUTH ONLY EMAIL </h2>
             <div className="links">
-                <Link href="/about"><button>Login</button></Link>
-                <Link href="/about"><button>SignUp</button></Link>
+                <Link href="/login"><button>Login</button></Link>
+                <Link href="/signup"><button>SignUp</button></Link>
             </div>
             
             <svg width="420" height="337.5" viewBox="0 0 56 45" fill="#ddd" xmlns="http://www.w3.org/2000/svg">

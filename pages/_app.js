@@ -1,13 +1,14 @@
+import 'firebaseui/dist/firebaseui.css'
 import '../styles/globals.scss'
 
 import NextNprogress from 'nextjs-progressbar'
 import Head from 'next/head'
 
 function MyApp({ Component, pageProps }) {
-  return ( 
+  return (
   <>
     <Head>
-        <title>Errbint.NET</title>
+        <title>NextPLANET</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="theme-color" content="#060410"/>
     </Head>
