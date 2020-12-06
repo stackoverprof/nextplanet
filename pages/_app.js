@@ -1,4 +1,3 @@
-import 'firebaseui/dist/firebaseui.css'
 import '../styles/globals.scss'
 
 import NextNprogress from 'nextjs-progressbar'
