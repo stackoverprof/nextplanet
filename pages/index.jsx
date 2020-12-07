@@ -1,8 +1,10 @@
 import React from 'react'
 import Styled from '@emotion/styled'
 import Link from 'next/link'
+import { useAuth } from '../core/contexts/AuthContext'
     
 const Home = () => {
+    const { currentUser } = useAuth()
 
     return (
         <Wrapper>
@@ -10,8 +12,9 @@ const Home = () => {
             <p>Clean-code practice oriented, It's a NextJS practical starter-template with a freedom of choice</p>
             <h2>START-UP: AUTH ONLY EMAIL </h2>
             <div className="links">
-                <Link href="/login"><button>Login</button></Link>
-                <Link href="/signup"><button>SignUp</button></Link>
+                {!currentUser && <Link href="/login"><button>Login</button></Link>}
+                {!currentUser && <Link href="/signup"><button>SignUp</button></Link>}
+                {currentUser && <Link href="/dashboard"><button>Dashboard</button></Link>}
             </div>
             
             <svg width="420" height="337.5" viewBox="0 0 56 45" fill="#ddd" xmlns="http://www.w3.org/2000/svg">
@@ -27,7 +30,7 @@ const Wrapper = Styled.div(() =>`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
+    
     h1{
         font-size: 54px;
         margin: 120px 0 8px 0;
@@ -51,6 +54,7 @@ const Wrapper = Styled.div(() =>`
         bottom: -100px;
         z-index: -1;
     }
+
 `)
     
 export default Home
