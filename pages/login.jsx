@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import Styled from '@emotion/styled'
 import { useAuth } from '../core/contexts/AuthContext'
 import GuestOnlyRoute from '../core/customRoute/GuestOnlyRoute'
@@ -24,6 +25,7 @@ const SignUp = () => {
                         <input type="password" onChange={(e) => setpassword(e.target.value)} value={password} placeholder="Masukan Password"/>
                     </div>
                     <button type="submit">SIGNIN</button>
+                    <Link href="/"><button>Back Home</button></Link>
                 </form>
             </Wrapper>
         </GuestOnlyRoute>

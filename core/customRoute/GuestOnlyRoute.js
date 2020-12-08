@@ -10,13 +10,12 @@ const GuestOnlyRoute = ({children, redirect}) => {
 
     useEffect(() => {
         if (isLoggedIn) router.push(redirect)
-        console.log(isLoggedIn)
     }, [currentUser])
 
     return (
-        <>
+        <div>
            {!isLoggedIn && children} 
-        </>
+        </div>
     )
 }
 
