@@ -2,19 +2,21 @@ import React from 'react'
 import Styled from '@emotion/styled'
 import Link from 'next/link'
 import { useAuth } from '../core/contexts/AuthContext'
-import UserOnlyRoute from '../core/customRoute/UserOnlyRoute'
+// import UserOnlyRoute from '../core/customRoute/UserOnlyRoute'
     
 const Dashboard = () => {
     const { currentUser, handleSignout } = useAuth()
 
     return (
-        <UserOnlyRoute redirect="/login">
+        // <UserOnlyRoute redirect="/login">
+        <div>
             {currentUser && <Wrapper>
                 <Link href="/"><button>Back Home</button></Link>
                 <button onClick={handleSignout}>LOGOUT</button>
                 <p>Dashboard of {currentUser.email}</p>
             </Wrapper>}
-        </UserOnlyRoute>
+        </div>
+        // </UserOnlyRoute>
     )
 }
     
