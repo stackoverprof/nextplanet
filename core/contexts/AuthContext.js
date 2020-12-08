@@ -12,14 +12,16 @@ const AuthProvider = ({children}) => {
         AUTH.createUserWithEmailAndPassword(email, password)
             .then(()=>{
                 setcurrentUser(AUTH.currentUser)
+                setpassword('')
             })
             .catch(err => console.log(err))
-    }
-
-    const handleSignin = () => {
-        AUTH.signInWithEmailAndPassword(email, password)
+        }
+        
+        const handleSignin = () => {
+            AUTH.signInWithEmailAndPassword(email, password)
             .then(()=>{
                 setcurrentUser(AUTH.currentUser)
+                setpassword('')
             })
             .catch(err => console.log(err))
     }
