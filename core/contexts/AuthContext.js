@@ -4,7 +4,6 @@ import { AUTH } from '../services/firebase'
 const firebaseAuth = React.createContext()
 
 const AuthProvider = ({children}) => {
-    const [isLoggedIn, setisLoggedIn] = useState(false)
     const [currentUser, setcurrentUser] = useState({})
     const [email, setemail] = useState('')
     const [password, setpassword] = useState('')
@@ -32,13 +31,7 @@ const AuthProvider = ({children}) => {
     }
 
     useEffect(() => {
-        console.log(currentUser)
         const unsubscribe = AUTH.onAuthStateChanged(user => {
-            if (user) {
-                setisLoggedIn(true)
-            } else {
-                setisLoggedIn(false)
-            }
             setcurrentUser(user)
         })
 
@@ -51,7 +44,6 @@ const AuthProvider = ({children}) => {
             handleSignin,
             handleSignout,
             currentUser,
-            isLoggedIn,
             email,
             setemail,
             password,
