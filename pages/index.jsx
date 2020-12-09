@@ -1,7 +1,7 @@
 import React from 'react'
 import Styled from '@emotion/styled'
 import Link from 'next/link'
-import { DB } from '../extensions/services/firebase'
+import { DB } from '../core/services/firebase'
     
 const Home = () => {
 
