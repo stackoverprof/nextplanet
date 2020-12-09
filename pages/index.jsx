@@ -13,7 +13,7 @@ const Home = () => {
             <h2>START-UP: AUTH ONLY EMAIL </h2>
             <div className="links">
                 {!currentUser && <Link href="/login"><button>Login</button></Link>}
-                {!currentUser && <Link href="/signup"><button>SignUp</button></Link>}
+                {!currentUser && <Link href="/register"><button>Register</button></Link>}
                 {currentUser && <Link href="/dashboard"><button>Dashboard</button></Link>}
             </div>
             <svg width="420" height="337.5" viewBox="0 0 56 45" fill="#ddd" xmlns="http://www.w3.org/2000/svg">

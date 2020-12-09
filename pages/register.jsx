@@ -1,9 +1,10 @@
 import React from 'react'
+import Link from 'next/link'
 import Styled from '@emotion/styled'
 import { useAuth } from '../core/contexts/AuthContext'
 import GuestOnlyRoute from '../core/customRoute/GuestOnlyRoute'
 
-const SignUp = () => {
+const Register = () => {
     const { handleSignup, email, password, setemail, setpassword } = useAuth()
 
     const handleSubmit = (e) => {
@@ -23,8 +24,9 @@ const SignUp = () => {
                         <label htmlFor="email">PASSWORD</label>
                         <input type="password" onChange={(e) => setpassword(e.target.value)} value={password} placeholder="Masukan Password"/>
                     </div>
-                    <button type="submit">SIGNUP</button>
+                    <button type="submit">REGISTER</button>
                 </form>
+                <Link href="/">Back Home</Link>
             </Wrapper>
         </GuestOnlyRoute>
     )
@@ -37,6 +39,7 @@ const Wrapper = Styled.div(() =>`
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 
     form{
         display: flex;
@@ -60,4 +63,4 @@ const Wrapper = Styled.div(() =>`
     }
 `)
 
-export default SignUp
+export default Register
