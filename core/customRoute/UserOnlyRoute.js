@@ -3,14 +3,12 @@ import { useRouter } from 'next/router'
 import { useAuth } from '../contexts/AuthContext'
 
 const UserOnlyRoute = ({children, redirect}) => {
-    const { currentUser } = useAuth()
+    const { isLoggedIn } = useAuth()
     const router = useRouter()
-
-    const isLoggedIn = currentUser != null
 
     useEffect(() => {
         if (!isLoggedIn) router.push(redirect)
-    }, [currentUser])
+    }, [isLoggedIn])
 
     return (
         <div>

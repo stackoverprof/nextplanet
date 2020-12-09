@@ -4,9 +4,10 @@ import { AUTH } from '../services/firebase'
 const firebaseAuth = React.createContext()
 
 const AuthProvider = ({children}) => {
+    const [isLoggedIn, setisLoggedIn] = useState(false)
     const [currentUser, setcurrentUser] = useState({})
-    const [email, setemail] = useState('')
     const [password, setpassword] = useState('')
+    const [email, setemail] = useState('')
 
     const handleSignup = () => {
         AUTH.createUserWithEmailAndPassword(email, password)
@@ -31,10 +32,15 @@ const AuthProvider = ({children}) => {
     }
 
     useEffect(() => {
+        console.log(currentUser)
         const unsubscribe = AUTH.onAuthStateChanged(user => {
-              setcurrentUser(user)
-              console.log("onAuthStateChangeTriggered");
-          })
+            if (user) {
+                setisLoggedIn(true)
+            } else {
+                setisLoggedIn(false)
+            }
+            setcurrentUser(user)
+        })
 
         return unsubscribe
     }, [])
@@ -45,6 +51,7 @@ const AuthProvider = ({children}) => {
             handleSignin,
             handleSignout,
             currentUser,
+            isLoggedIn,
             email,
             setemail,
             password,
