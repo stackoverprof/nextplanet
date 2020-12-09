@@ -1,7 +1,7 @@
 import React from 'react'
 import Styled from '@emotion/styled'
 import { useAuth } from '../core/contexts/AuthContext'
-// import GuestOnlyRoute from '../core/customRoute/GuestOnlyRoute'
+import GuestOnlyRoute from '../core/customRoute/GuestOnlyRoute'
 
 const SignUp = () => {
     const { handleSignup, email, password, setemail, setpassword } = useAuth()
@@ -12,7 +12,7 @@ const SignUp = () => {
     }
 
     return (
-        // <GuestOnlyRoute redirect="/dashboard">
+        <GuestOnlyRoute redirect="/dashboard">
             <Wrapper>
                 <form onSubmit={handleSubmit}>
                     <div>
@@ -26,7 +26,7 @@ const SignUp = () => {
                     <button type="submit">SIGNUP</button>
                 </form>
             </Wrapper>
-        // </GuestOnlyRoute>
+        </GuestOnlyRoute>
     )
 }
 
