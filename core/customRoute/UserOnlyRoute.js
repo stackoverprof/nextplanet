@@ -6,15 +6,17 @@ const UserOnlyRoute = ({children, redirect}) => {
     const { currentUser } = useAuth()
     const router = useRouter()
 
-    const isLoggedIn = currentUser != null
-
     useEffect(() => {
-        if (!isLoggedIn) router.push(redirect)
+        if (!currentUser) return router.push(redirect)
     }, [currentUser])
 
     return (
         <div>
-           {isLoggedIn && children} 
+           {
+               currentUser ? (
+                   <>{children}</>
+               ) : <div></div>
+           }
         </div>
     )
 }

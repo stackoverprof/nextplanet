@@ -10,11 +10,15 @@ const Dashboard = () => {
     return (
         <UserOnlyRoute redirect="/login">
             <div>
-                {currentUser && <Wrapper>
-                    <Link href="/"><button>Back Home</button></Link>
-                    <button onClick={handleSignout}>LOGOUT</button>
-                    <p>Dashboard of {currentUser.email}</p>
-                </Wrapper>}
+                {
+                    currentUser ? (
+                        <Wrapper>
+                            <Link href="/"><button>Back Home</button></Link>
+                            <button onClick={handleSignout}>LOGOUT</button>
+                            <p>Dashboard of {currentUser.email}</p>
+                        </Wrapper>
+                    ) : <div></div>
+                }
             </div>
         </UserOnlyRoute>
     )
