@@ -6,25 +6,25 @@ const firebaseAuth = React.createContext()
 const AuthProvider = ({children}) => {
     const [isLoggedIn, setisLoggedIn] = useState(false)
     const [currentUser, setcurrentUser] = useState({})
-    const [password, setpassword] = useState('')
     const [email, setemail] = useState('')
+    const [password, setpassword] = useState('')
 
     const handleSignup = () => {
         AUTH.createUserWithEmailAndPassword(email, password)
-            .then(()=>{
-                setcurrentUser(AUTH.currentUser)
-                setpassword('')
-            })
-            .catch(err => console.log(err))
-        }
-        
-        const handleSignin = () => {
-            AUTH.signInWithEmailAndPassword(email, password)
-            .then(()=>{
-                setcurrentUser(AUTH.currentUser)
-                setpassword('')
-            })
-            .catch(err => console.log(err))
+        .then(()=>{
+            setcurrentUser(AUTH.currentUser)
+            setpassword('')
+        })
+        .catch(err => console.log(err))
+    }
+    
+    const handleSignin = () => {
+        AUTH.signInWithEmailAndPassword(email, password)
+        .then(()=>{
+            setcurrentUser(AUTH.currentUser)
+            setpassword('')
+        })
+        .catch(err => console.log(err))
     }
 
     const handleSignout = () => {

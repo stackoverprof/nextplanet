@@ -5,19 +5,17 @@ import { useAuth } from '../core/contexts/AuthContext'
 import UserOnlyRoute from '../core/customRoute/UserOnlyRoute'
     
 const Dashboard = () => {
-    const { currentUser, handleSignout } = useAuth()
+    const { currentUser, isLoggedIn, handleSignout } = useAuth()
 
     return (
         <UserOnlyRoute redirect="/login">
             <div>
-                {
-                    currentUser ? (
-                        <Wrapper>
-                            <Link href="/"><button>Back Home</button></Link>
-                            <button onClick={handleSignout}>LOGOUT</button>
-                            <p>Dashboard of {currentUser.email}</p>
-                        </Wrapper>
-                    ) : <div></div>
+                {isLoggedIn && 
+                    <Wrapper>
+                        <Link href="/"><button>Back Home</button></Link>
+                        <button onClick={handleSignout}>LOGOUT</button>
+                        <p>Dashboard of {currentUser.email}</p>
+                    </Wrapper>
                 }
             </div>
         </UserOnlyRoute>

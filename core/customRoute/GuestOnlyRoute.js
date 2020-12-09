@@ -7,7 +7,7 @@ const GuestOnlyRoute = ({children, redirect}) => {
     const router = useRouter()
     
     useEffect(() => {
-        if(isLoggedIn) router.push(redirect)
+        if (isLoggedIn) router.push(redirect)
     }, [isLoggedIn])
 
     return (
