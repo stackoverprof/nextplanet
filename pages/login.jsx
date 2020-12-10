@@ -1,20 +1,29 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Styled from '@emotion/styled'
 import { useAuth } from '../core/contexts/AuthContext'
 import GuestOnlyRoute from '../core/customRoute/GuestOnlyRoute'
 
 const Login = () => {
-    const { handleSignin, email, password, setemail, setpassword } = useAuth()
+    const [email, setemail] = useState('')
+    const [password, setpassword] = useState('')
 
+    const { authMethods, errorCode, seterrorCode } = useAuth()
+    
     const handleSubmit = (e) => {
         e.preventDefault()
-        handleSignin()
+        seterrorCode('')
+        authMethods.handleSignin(email, password).catch(setpassword(''))
     }
+    
+    useEffect(() => {
+        return seterrorCode('')
+    }, [])
 
     return (
         <GuestOnlyRoute redirect="/dashboard">
             <Wrapper>
+                {errorCode != '' && <p className="error-message">{errorCode}</p>}
                 <form onSubmit={handleSubmit}>
                     <div>
                         <label htmlFor="email">EMAIL</label>
@@ -26,7 +35,11 @@ const Login = () => {
                     </div>
                     <button type="submit">LOGIN</button>
                 </form>
-                <Link href="/">Back Home</Link>
+                <div className="links">
+                    <Link href="/register">Register Instead</Link>
+                    |
+                    <Link href="/">Back Home</Link>
+                </div>
             </Wrapper>
         </GuestOnlyRoute>
     )
@@ -59,6 +72,16 @@ const Wrapper = Styled.div(() =>`
             label{
                 margin-bottom: 4px;
             }
+        }
+    }
+
+    .links{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        a{
+            margin: 12px;
         }
     }
 `)

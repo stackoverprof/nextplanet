@@ -1,61 +1,52 @@
-
-//TODO : displaying error message
-//TODO : storing user profile data
-
 import React, { useContext, useEffect, useState } from 'react'
 import { AUTH } from '../services/firebase'
 
 const firebaseAuth = React.createContext()
 
 const AuthProvider = ({children}) => {
-    const [currentUser, setcurrentUser] = useState({})
     const [authState, setauthState] = useState('initial')
-    const [email, setemail] = useState('')
-    const [password, setpassword] = useState('')
+    const [currentUser, setcurrentUser] = useState({})
+    const [errorCode, seterrorCode] = useState('')
 
-    const handleSignup = () => {
-        AUTH.createUserWithEmailAndPassword(email, password)
-        .then(()=>{
-            setcurrentUser(AUTH.currentUser)
-            setpassword('')
-        })
-        .catch(err => console.log(err))
-    }
-    
-    const handleSignin = () => {
-        AUTH.signInWithEmailAndPassword(email, password)
-        .then(()=>{
-            setcurrentUser(AUTH.currentUser)
-            setpassword('')
-        })
-        .catch(err => console.log(err))
-    }
+    const authMethods = {
+        handleSignup : (email, password, displayName) => {
+            return AUTH.createUserWithEmailAndPassword(email, password)
+                .then(async res => {
+                    const data = await res.user.updateProfile({
+                        displayName: displayName
+                    })
+                    setcurrentUser(data.user)
+                })
+                .catch(err => seterrorCode(err.code))
+        },
+        
+        handleSignin : (email, password) => {
+            return AUTH.signInWithEmailAndPassword(email, password)
+                .then(res => setcurrentUser(res.user))  
+                .catch(err => seterrorCode(err.code))
+        },
 
-    const handleSignout = () => {
-        AUTH.signOut()
+        handleSignout : () => {
+            AUTH.signOut()
+        }
     }
-
+        
     useEffect(() => {        
         const unsubscribe = AUTH.onAuthStateChanged(user => {
             if(user) setauthState('user')
             else setauthState('guest')
             setcurrentUser(user)
         })
-
         return unsubscribe
     }, [])
     
     return (
         <firebaseAuth.Provider value={{
-            handleSignup,
-            handleSignin,
-            handleSignout,
+            authMethods,
             authState,
             currentUser,
-            email,
-            setemail,
-            password,
-            setpassword
+            errorCode,
+            seterrorCode
         }}>
             {children}
         </firebaseAuth.Provider>

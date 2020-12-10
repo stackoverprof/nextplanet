@@ -5,17 +5,17 @@ import { useAuth } from '../core/contexts/AuthContext'
 import UserOnlyRoute from '../core/customRoute/UserOnlyRoute'
     
 const Dashboard = () => {
-    const { currentUser, handleSignout } = useAuth()
+    const { currentUser, authMethods } = useAuth()
 
     return (
         <UserOnlyRoute redirect="/login">
             {currentUser && 
                 <Wrapper>
+                    <p>Dashboard of {currentUser.displayName}</p>
                     <div>
                         <Link href="/"><button>BACK HOME</button></Link>
-                        <button onClick={handleSignout} className="red">LOGOUT</button>
+                        <button onClick={authMethods.handleSignout} className="red">LOGOUT</button>
                     </div>
-                    <p>Dashboard of {currentUser.email}</p>
                 </Wrapper>
             }
         </UserOnlyRoute>
@@ -35,7 +35,8 @@ const Wrapper = Styled.div(() =>`
     }
 
     p{
-        margin-left: 12px;
+
+        margin-top: 54px;
         text-align: center;
     }
 `)
