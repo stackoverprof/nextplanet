@@ -9,26 +9,34 @@ const Dashboard = () => {
 
     return (
         <UserOnlyRoute redirect="/login">
-            <div>
-                {currentUser && 
-                    <Wrapper>
-                        <Link href="/"><button>Back Home</button></Link>
-                        <button onClick={handleSignout}>LOGOUT</button>
-                        <p>Dashboard of {currentUser.email}</p>
-                    </Wrapper>
-                }
-            </div>
+            {currentUser && 
+                <Wrapper>
+                    <div>
+                        <Link href="/"><button>BACK HOME</button></Link>
+                        <button onClick={handleSignout} className="red">LOGOUT</button>
+                    </div>
+                    <p>Dashboard of {currentUser.email}</p>
+                </Wrapper>
+            }
         </UserOnlyRoute>
     )
 }
-    
+
 const Wrapper = Styled.div(() =>`
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     
+    div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     p{
         margin-left: 12px;
+        text-align: center;
     }
 `)
     

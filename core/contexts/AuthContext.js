@@ -1,3 +1,7 @@
+
+//TODO : displaying error message
+//TODO : storing user profile data
+
 import React, { useContext, useEffect, useState } from 'react'
 import { AUTH } from '../services/firebase'
 
@@ -5,6 +9,7 @@ const firebaseAuth = React.createContext()
 
 const AuthProvider = ({children}) => {
     const [currentUser, setcurrentUser] = useState({})
+    const [authState, setauthState] = useState('initial')
     const [email, setemail] = useState('')
     const [password, setpassword] = useState('')
 
@@ -32,6 +37,8 @@ const AuthProvider = ({children}) => {
 
     useEffect(() => {        
         const unsubscribe = AUTH.onAuthStateChanged(user => {
+            if(user) setauthState('user')
+            else setauthState('guest')
             setcurrentUser(user)
         })
 
@@ -43,6 +50,7 @@ const AuthProvider = ({children}) => {
             handleSignup,
             handleSignin,
             handleSignout,
+            authState,
             currentUser,
             email,
             setemail,

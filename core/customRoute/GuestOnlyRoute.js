@@ -3,16 +3,18 @@ import { useRouter } from 'next/router'
 import { useAuth } from '../contexts/AuthContext'
 
 const GuestOnlyRoute = ({children, redirect}) => {
-    const { currentUser } = useAuth()
+    const { authState } = useAuth()
     const router = useRouter()
     
     useEffect(() => {
-        if (currentUser) router.push(redirect)
-    }, [currentUser])
+        if (authState != 'guest' && authState != 'initial') {
+            router.push(redirect)
+        }
+    }, [authState])
 
     return (
         <div>
-           {!currentUser && children}
+           {authState == 'guest' && children}
         </div>
     )
 }

@@ -72,6 +72,31 @@ button.disabled{
     }
 }
 
+.red{
+    background: #e20a5d;
+
+    &:hover{
+        background: #b6064a;
+    }
+
+    &:focus{
+        outline: none;
+        border: 1px white;
+    }
+}
+.bordered{
+    background: none;
+    border: 1px solid black;
+    color: black;
+    &:hover{
+        background: #cccccc;
+    }
+
+    &:focus{
+        outline: none;
+    }
+}
+
 input{
     border: 1px solid gray;
     border-radius: 4px;
