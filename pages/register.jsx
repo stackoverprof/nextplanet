@@ -29,15 +29,15 @@ const Register = () => {
                 <form onSubmit={handleSubmit}>
                     <div>
                         <label htmlFor="diplay-name">NAMA</label>
-                        <input type="text" id="display-name" onChange={(e) => setdisplayName(e.target.value)} value={displayName} placeholder="Masukan Nama"/>
+                        <input type="text" onChange={(e) => setdisplayName(e.target.value)} value={displayName} required id="display-name" placeholder="Masukan Nama"/>
                     </div>
                     <div>
                         <label htmlFor="email">EMAIL</label>
-                        <input type="email" id="email" onChange={(e) => setemail(e.target.value)} value={email} placeholder="Masukan Email"/>
+                        <input type="email" onChange={(e) => setemail(e.target.value)} value={email} required id="email" placeholder="Masukan Email"/>
                     </div>
                     <div>
                         <label htmlFor="password">PASSWORD</label>
-                        <input type="password" id="password" onChange={(e) => setpassword(e.target.value)} value={password} placeholder="Masukan Password"/>
+                        <input type="password" onChange={(e) => setpassword(e.target.value)} value={password} required id="password" placeholder="Masukan Password"/>
                     </div>
                     <button type="submit">REGISTER</button>
                 </form>

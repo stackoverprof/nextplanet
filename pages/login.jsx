@@ -28,11 +28,11 @@ const Login = () => {
                 <form onSubmit={handleSubmit}>
                     <div>
                         <label htmlFor="email">EMAIL</label>
-                        <input type="email" id="email" onChange={(e) => setemail(e.target.value)} value={email} placeholder="Masukan Email"/>
+                        <input type="email" onChange={(e) => setemail(e.target.value)} value={email} required id="email" placeholder="Masukan Email"/>
                     </div>
                     <div>
                         <label htmlFor="email">PASSWORD</label>
-                        <input type="password" onChange={(e) => setpassword(e.target.value)} value={password} placeholder="Masukan Password"/>
+                        <input type="password" onChange={(e) => setpassword(e.target.value)} value={password} required id="password" placeholder="Masukan Password"/>
                     </div>
                     <button type="submit">LOGIN</button>
                 </form>
