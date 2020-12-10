@@ -19,7 +19,7 @@ const AuthProvider = ({children}) => {
                 })
                 .catch(err => seterrorCode(err.code))
         },
-        
+
         handleSignin : (email, password) => {
             return AUTH.signInWithEmailAndPassword(email, password)
                 .then(res => setcurrentUser(res.user))  

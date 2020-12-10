@@ -14,7 +14,8 @@ const Register = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         seterrorCode('')
-        authMethods.handleSignup(email, password, displayName).catch(setpassword(''))
+        authMethods.handleSignup(email, password, displayName)
+            .catch(() => setpassword(''))
     }
 
     useEffect(() => {

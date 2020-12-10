@@ -13,7 +13,8 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         seterrorCode('')
-        authMethods.handleSignin(email, password).catch(setpassword(''))
+        authMethods.handleSignin(email, password)
+            .catch(() => setpassword(''))
     }
     
     useEffect(() => {
