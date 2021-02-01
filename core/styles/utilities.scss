@@ -1,0 +1,27 @@
+.contain-size{
+    width: 90%;
+    max-width: 1000px;
+    min-width: 320px;
+    
+    &--m {
+        @extend .contain-size;
+        max-width: 900px;
+    }
+    &--s {
+        @extend .contain-size;
+        max-width: 720px;
+    }
+    &--xs {
+        @extend .contain-size;
+        max-width: 500px;
+    }
+}
+
+.flex-cc{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.d-col{
+    flex-direction: column;
+}

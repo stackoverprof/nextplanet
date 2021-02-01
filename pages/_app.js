@@ -1,10 +1,11 @@
-import '../styles/globals.scss'
+import '../core/styles/globals.scss'
 
-import NextNprogress from 'nextjs-progressbar'
 import Head from 'next/head'
+import ProgressBar from 'nextjs-progressbar'
 import AuthProvider from '../core/contexts/AuthContext'
+import LoadScreen from '../components/molecular/LoadScreen'
 
-function MyApp({ Component, pageProps }) {
+const App = ({ Component, pageProps }) => {
   return (
   <>
     <Head>
@@ -12,7 +13,8 @@ function MyApp({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" />
         <meta name="theme-color" content="#060410"/>
     </Head>
-    <NextNprogress color="black" startPosition={0.3} stopDelayMs={200} height="3"/>
+    <LoadScreen />
+    <ProgressBar color="black" startPosition={0.3} stopDelayMs={200} height="3" options={{showSpinner: false}}/>
     <AuthProvider>
       <Component {...pageProps} />
     </AuthProvider>
@@ -20,4 +22,4 @@ function MyApp({ Component, pageProps }) {
   )
 }
 
-export default MyApp
+export default App

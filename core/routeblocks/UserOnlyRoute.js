@@ -7,14 +7,14 @@ const UserOnlyRoute = ({children, redirect}) => {
     const router = useRouter()
 
     useEffect(() => {
-        if (authState != 'user' && authState != 'initial') {
+        if (authState !== 'user' && authState !== 'initial') {
             router.push(redirect)
         }
     }, [authState])
 
     return (
         <div>
-           {authState == 'user' && children} 
+           { authState === 'user' && children } 
         </div>
     )
 }
